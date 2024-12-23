@@ -39,9 +39,63 @@ In this Arduino  Relay Control Circuit we have used Arduino to control the relay
 
 ## PROGRAM:
 
+    #include"ThingSpeak.h"
+    #include<WiFi.h>
+    #include"DHT.h"
+    char ssid[]="Pooja's S23FE";
+    char pass[]="pooja@2006";
+    const int out=23;
+    long T;
+    float temperature=0;
+    WiFiClient client;
+    DHT dht(23,DHT11);
+    unsigned long myChannelField=2785413;
+    const int TemperatureField=1;
+    const int HumidityField=2;
+    const char*myWriteAPIKEY="PFIMJM7T42XDF9FY";
+    void setup() {
+      Serial.begin(115200);
+      pinMode(out,INTPUT);
+      ThingSpeak.begin(client);
+      dht.begin();
+      delay(1000);
+    }
+    void loop() 
+    {
+      if(WiFi.status()!=WL_CONNECTED)
+      {
+    Serial.print("Attempting to connect to SSID:");
+      Serial.println(ssid);
+      while(WiFi.status()!=WL_CONNECTED)
+      {
+        WiFi.begin(ssid,pass);
+        Serial.print(".");
+        delay(5000);
+      }
+      Serial.println("\nConnected.");
+    }
+      float temperature=dht.readTemperature();
+      float humidity=dht.readHumidity();
+    
+      Serial.print("Temperature: ");
+      Serial.print(temperature);
+      Serial.println(" C");
+    
+      Serial.print("Humidity");
+    Serial.print(humidity);
+      Serial.println("g.m-3");
+      ThingSpeak.writeField(myChannelField,TemperatureField,temperature,myWriteAPIKey);
+      ThingSpeak.writeField(myChannelField,HumidityField,Humidity,myWriteAPIKey);
+      delay(100);
+    }
+
 ## CIRCUIT DIAGRAM:
 
+![image](https://github.com/user-attachments/assets/4e74fb5e-3f55-4a5d-9ab9-02d74c82fc6f)
+
 ## OUTPUT:
+
+![image](https://github.com/user-attachments/assets/dcd8f77c-c8fb-4b9b-bced-1b8658ea82a1)
 
 ## RESULT:
 
