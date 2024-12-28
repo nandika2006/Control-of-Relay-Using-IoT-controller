@@ -96,14 +96,13 @@ In this Arduino  Relay Control Circuit we have used Arduino to control the relay
 
 ## OUTPUT:
 
-# 1.ON
-![image](https://github.com/user-attachments/assets/84896177-9413-4039-88fe-8d24a134a188)
+# 1.OFF
+![image](https://github.com/user-attachments/assets/e021bca6-67e4-477d-8279-e10315ef239b)
 
-# 2. OFF
-![image](https://github.com/user-attachments/assets/9b68dcfe-a21a-47d2-9bcb-09867f06f4b9)
 
-# 3. Light off
-![image](https://github.com/user-attachments/assets/c5eac70a-11af-419f-acff-cca82be4bc36)
+# 2. ON
+![image](https://github.com/user-attachments/assets/4fcc31a0-bb2c-45d0-8f51-55248ee9d21d)
+
 
 ## RESULT:
 
